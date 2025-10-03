@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка автомобиля - YG Auto</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a, #2a2a2a, #1a1a1a);
+            z-index: -3;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 0;
+            border-bottom: 2px solid #333;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #d4af37, #ffd700, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .evaluation-section {
+            padding: 150px 20px 80px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .evaluation-form {
+            background: rgba(26,26,26,0.9);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .benefits {
+            margin-top: 40px;
+            text-align: center;
+            color: #cccccc;
+        }
+
+        .benefit-item {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .evaluation-section {
+                padding: 120px 20px 60px;
+            }
+
+            .evaluation-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Звездный фон -->
+    <div class="stars" id="stars"></div>
+    <div class="gradient-bg"></div>
+
+    <!-- Шапка -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">YG AUTO</div>
+            <div class="nav-links">
+                <a href="/">Главная</a>
+                <a href="/cars">Каталог авто</a>
+                <a href="/about">О компании</a>
+                <a href="/evaluate">Оценить авто</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Форма оценки -->
+    <section class="evaluation-section">
+        <h1 class="section-title">ОЦЕНИТЬ ВАШ АВТОМОБИЛЬ</h1>
+
+        <div class="evaluation-form">
+            <form action="/evaluate" method="POST">
+                <div class="form-group">
+                    <label class="form-label">Марка автомобиля *</label>
+                    <input type="text" name="brand" class="form-input" placeholder="Например: BMW" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Модель *</label>
+                    <input type="text" name="model" class="form-input" placeholder="Например: X5" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Год выпуска *</label>
+                    <input type="number" name="year" class="form-input" placeholder="Например: 2020" min="1990" max="2024" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Пробег (км)</label>
+                    <input type="number" name="mileage" class="form-input" placeholder="Например: 50000">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Состояние</label>
+                    <select name="condition" class="form-select">
+                        <option value="excellent">Отличное</option>
+                        <option value="good">Хорошее</option>
+                        <option value="satisfactory">Удовлетворительное</option>
+                        <option value="needs_repair">Требует ремонта</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ваш телефон *</label>
+                    <input type="tel" name="phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Дополнительная информация</label>
+                    <textarea name="additional_info" class="form-textarea" rows="4" placeholder="Особенности, комплектация, история обслуживания..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">ПОЛУЧИТЬ ОЦЕНКУ</button>
+            </form>
+        </div>
+
+        <div class="benefits">
+            <div class="benefit-item">✅ Оценка за 15 минут</div>
+            <div class="benefit-item">✅ Деньги в день обращения</div>
+            <div class="benefit-item">✅ Бесплатный выезд специалиста</div>
+            <div class="benefit-item">✅ До 95% рыночной стоимости</div>
+        </div>
+    </section>
+
+    <script>
+        // Создание звезд
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Маска для телефона
+        const phoneInput = document.querySelector('input[name="phone"]');
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('7') || value.startsWith('8')) {
+                value = value.substring(1);
+            }
+            if (value.length > 0) {
+                value = '+7 (' + value;
+                if (value.length > 7) value = value.substring(0, 7) + ') ' + value.substring(7);
+                if (value.length > 12) value = value.substring(0, 12) + '-' + value.substring(12);
+                if (value.length > 15) value = value.substring(0, 15) + '-' + value.substring(15);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

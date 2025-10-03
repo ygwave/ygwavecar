@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>О компании - YG Auto</title>
+    <style>
+        /* Базовые стили из cars.html */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+
+        .star:nth-child(2n) {
+            background: #d4af37;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3n) {
+            background: #ffd700;
+            animation-delay: 2s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a, #2a2a2a, #1a1a1a);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            z-index: -3;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 0;
+            border-bottom: 2px solid #333;
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, #ffd700, #d4af37, transparent);
+            animation: neonFlow 3s linear infinite;
+        }
+
+        @keyframes neonFlow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav a:hover::before {
+            left: 100%;
+        }
+
+        .nav a:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #d4af37, #ffd700, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            from { text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+            to { text-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        /* Специфичные стили для страницы о компании */
+        .about-hero {
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(45,45,45,0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-title {
+            font-size: 52px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #d4af37, #ffd700, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleShine 3s ease-in-out infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes titleShine {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 60px auto;
+        }
+
+        .stat-card {
+            background: rgba(26,26,26,0.8);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        .team-section {
+            padding: 80px 20px;
+            background: rgba(15,15,15,0.8);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: rgba(26,26,26,0.9);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #000;
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .team-role {
+            color: #d4af37;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .timeline-item {
+            background: rgba(26,26,26,0.8);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #d4af37;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 60px auto;
+        }
+
+        .certificate {
+            background: rgba(26,26,26,0.8);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .certificate:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+        }
+
+        .services {
+            padding: 80px 20px;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            background: rgba(26,26,26,0.8);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .contact-item {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Анимации появления */
+        .stat-card, .team-card, .timeline-item, .certificate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .stat-card.visible, .team-card.visible, .timeline-item.visible, .certificate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Звездный фон -->
+    <div class="stars" id="stars"></div>
+    <div class="gradient-bg"></div>
+
+    <!-- Шапка -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">YG AUTO</div>
+            <a href="/">Главная</a>
+            <a href="/cars">Каталог авто</a>
+            <a href="/about">О компании</a>
+        </nav>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="about-hero">
+        <h1 class="about-title">О КОМПАНИИ YG AUTO</h1>
+        <p style="font-size: 20px; color: #cccccc; max-width: 800px; margin: 0 auto;">
+            Более 10 лет мы предоставляем эксклюзивные автомобили премиум-класса и услуги высочайшего качества
+        </p>
+
+        <!-- Статистика -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Лет на рынке</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Довольных клиентов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Проданных авто</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Положительных отзывов</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- История компании -->
+
+    <!-- Команда -->
+    <section class="services">
+        <h2 class="section-title">НАША КОМАНДА</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">👨‍💼</div>
+                <div class="team-name">name </div>
+                <div class="team-role">Генеральный директор</div>
+                <div class="team-text">Основатель компании с 10-летним опытом в автомобильном бизнесе</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👩‍💼</div>
+                <div class="team-name">name </div>
+                <div class="team-role">Финансовый директор</div>
+                <div class="team-text">Специалист по финансам с MBA и 8-летним опытом</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👨‍🔧</div>
+                <div class="team-name">name </div>
+                <div class="team-role">Технический директор</div>
+                <div class="team-text">Эксперт по автомобилям с 15-летним стажем</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сертификаты -->
+    <section class="team-section">
+        <h2 class="section-title">НАГРАДЫ И СЕРТИФИКАТЫ</h2>
+        <div class="certificates">
+            <div class="certificate">
+                <div style="font-weight: bold; margin-bottom: 10px;">- </div>
+                <div style="color: #cccccc;">- </div>
+            </div>
+            <div class="certificate">
+                <div style="font-weight: bold; margin-bottom: 10px;">- </div>
+                <div style="color: #cccccc;">- </div>
+            </div>
+            <div class="certificate">
+                <div style="font-weight: bold; margin-bottom: 10px;">- </div>
+                <div style="color: #cccccc;">- </div>
+            </div>
+            <div class="certificate">
+                <div style="font-size: 40px; margin-bottom: 15px;">🤝</div>
+                <div style="font-weight: bold; margin-bottom: 10px;">- </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="services">
+        <h2 class="section-title">КОНТАКТЫ</h2>
+        <div class="contact-info">
+            <div class="contact-item">📞 Телефон: +7 (903) 948-35-80</div>
+            <div class="contact-item">✉️ Email: zaha_ch@mail.ru</div>
+            <div class="contact-item">📍 Адрес: Барнаул, ул.Солнечная поляна, 21</div>
+            <div class="contact-item">🕒 Время работы: Пн-Вс 9:00-21:00</div>
+            <div class="contact-item">🌐 Сайт: www.ygauto.ru</div>
+        </div>
+    </section>
+
+    <script>
+        // Создание звезд
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Анимация появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.stat-card, .team-card, .timeline-item, .certificate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
