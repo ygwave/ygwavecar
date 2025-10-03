@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YG Auto - Выкуп и продажа автомобилей</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: #0a0a0a; 
+            color: #fff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            text-align: center;
+            padding: 2rem;
+        }
+        .container { max-width: 600px; }
+        .gradient-text {
+            background: linear-gradient(135deg, #ffd700, #d4af37, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient 3s ease infinite;
+        }
+        h1 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif; }
+        p { font-size: 1.2rem; margin-bottom: 2rem; color: #ccc; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="gradient-text">404</h1>
+        <p>Страница не найдена. Возможно, она была перемещена или удалена.</p>
+        <a href="/" class="btn">Вернуться на главную</a>
+    </div>
+</body>
+</html>
