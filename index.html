@@ -6,7 +6,6 @@
     <title>YG Auto - Выкуп и продажа автомобилей в Барнауле</title>
     <meta name="description" content="YG Auto - выкуп и продажа автомобилей в Барнауле. Срочный выкуп, Trade-In, премиальные авто. Оценка за 15 минут, деньги в день обращения.">
 
-    <!-- Подключаем красивые шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -34,7 +33,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Навигация для мобильных */
         .header {
             position: fixed;
             top: 0;
@@ -61,7 +59,6 @@
             z-index: 1001;
         }
 
-        /* Мобильное меню */
         .mobile-menu-btn {
             display: none;
             flex-direction: column;
@@ -127,7 +124,6 @@
             width: 100%;
         }
 
-        /* Красивый градиентный текст */
         .gradient-text {
             background: linear-gradient(135deg, var(--secondary-gold), var(--primary-gold), var(--accent-red), var(--secondary-gold));
             -webkit-background-clip: text;
@@ -141,7 +137,6 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* Элегантные заголовки */
         .elegant-title {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
@@ -168,7 +163,6 @@
             margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
             line-height: 1.2;
-            text-wrap: balance;
         }
 
         .banner-subtitle {
@@ -180,7 +174,6 @@
             margin-right: auto;
             font-weight: 300;
             letter-spacing: 0.3px;
-            text-wrap: pretty;
         }
 
         .banner-buttons {
@@ -190,7 +183,6 @@
             flex-wrap: wrap;
         }
 
-        /* Улучшенные кнопки для мобильных */
         .btn {
             padding: 1.1rem 2rem;
             text-decoration: none;
@@ -258,7 +250,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Стеклянный морфизм для карточек */
         .advantage-card, .service-card, .car-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -296,7 +287,6 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
-        /* Анимированные иконки */
         .advantage-icon, .service-icon {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
@@ -311,7 +301,6 @@
             filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.5));
         }
 
-        /* Неоновая подсветка для заголовков */
         .section-title {
             font-size: clamp(1.8rem, 5vw, 2.8rem);
             font-weight: 700;
@@ -321,7 +310,6 @@
             font-family: 'Playfair Display', serif;
             position: relative;
             display: inline-block;
-            text-wrap: balance;
         }
 
         .section-title::after {
@@ -336,7 +324,6 @@
             border-radius: 2px;
         }
 
-        /* Сетка для преимуществ и услуг */
         .advantages-grid, .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -357,7 +344,6 @@
             padding: 0 1.5rem;
         }
 
-        /* Парящие частицы (упрощены для мобильных) */
         .floating-particles {
             position: fixed;
             top: 0;
@@ -386,7 +372,6 @@
             }
         }
 
-        /* Анимация появления элементов */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -398,7 +383,6 @@
             transform: translateY(0);
         }
 
-        /* Улучшенный футер */
         .footer {
             background: linear-gradient(135deg,
                 rgba(26, 26, 26, 0.95),
@@ -424,7 +408,6 @@
                 transparent);
         }
 
-        /* Мобильная навигация */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: flex;
@@ -489,7 +472,6 @@
                 padding: 0 1rem;
             }
 
-            /* Уменьшаем количество частиц на мобильных */
             .particle {
                 display: none;
             }
@@ -532,7 +514,6 @@
             }
         }
 
-        /* Поддержка landscape режима */
         @media (max-height: 500px) and (orientation: landscape) {
             .main-banner {
                 min-height: 120vh;
@@ -548,7 +529,6 @@
             }
         }
 
-        /* Улучшения для планшетов */
         @media (min-width: 769px) and (max-width: 1024px) {
             .nav {
                 padding: 1.2rem 2rem;
@@ -565,12 +545,10 @@
             }
         }
 
-        /* Плавное появление при скролле */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Кастомный скроллбар */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -588,7 +566,6 @@
             background: linear-gradient(135deg, var(--secondary-gold), var(--accent-red));
         }
 
-        /* Убираем выделение при тапе на мобильных */
         .btn, .nav-link, .advantage-card, .service-card {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -598,24 +575,24 @@
     </style>
 </head>
 <body>
-    <!-- Добавляем парящие частицы -->
     <div class="floating-particles" id="floatingParticles"></div>
 
     <header class="header">
         <nav class="nav">
             <div class="logo elegant-title gradient-text">YG AUTO</div>
-
+            
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
+            
             <div class="nav-links" id="navLinks">
-                <a href="/" class="nav-link">Главная</a>
-                <a href="/cars" class="nav-link">Каталог авто</a>
-                <a href="/about" class="nav-link">О компании</a>
-                <a href="/evaluate" class="nav-link">Оценить авто</a>
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="cars.html" class="nav-link">Каталог авто</a>
+                <a href="about.html" class="nav-link">О компании</a>
+                <a href="evaluate.html" class="nav-link">Оценить авто</a>
+                <a href="contact.html" class="nav-link">Контакты</a>
             </div>
         </nav>
     </header>
@@ -625,13 +602,12 @@
             <h1 class="elegant-title gradient-text">ВЫКУП И ПРОДАЖА АВТОМОБИЛЕЙ</h1>
             <div class="banner-subtitle">Премиальные автомобили с гарантией качества. Оценка за 15 минут, деньги в день обращения</div>
             <div class="banner-buttons">
-                <a href="/cars" class="btn btn-primary">Смотреть каталог</a>
-                <a href="/evaluate" class="btn btn-secondary">Оценить мой авто</a>
+                <a href="cars.html" class="btn btn-primary">Смотреть каталог</a>
+                <a href="evaluate.html" class="btn btn-secondary">Оценить мой авто</a>
             </div>
         </div>
     </section>
 
-    <!-- Пример секции преимуществ -->
     <section class="section">
         <div class="section-header">
             <h2 class="section-title elegant-title">Наши преимущества</h2>
@@ -655,7 +631,6 @@
         </div>
     </section>
 
-    <!-- Дополнительная секция для демонстрации -->
     <section class="section">
         <div class="section-header">
             <h2 class="section-title elegant-title">Наши услуги</h2>
@@ -686,7 +661,6 @@
     </footer>
 
 <script>
-    // Мобильное меню
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
 
@@ -696,7 +670,6 @@
         document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Закрытие меню при клике на ссылку
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenuBtn.classList.remove('active');
@@ -705,10 +678,9 @@
         });
     });
 
-    // Создание парящих частиц (оптимизировано для мобильных)
     const particlesContainer = document.getElementById('floatingParticles');
     const particleCount = window.innerWidth < 768 ? 8 : 15;
-
+    
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -722,14 +694,13 @@
         particlesContainer.appendChild(particle);
     }
 
-    // Анимация появления при скролле
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, {
+    }, { 
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
@@ -738,7 +709,6 @@
         observer.observe(el);
     });
 
-    // Параллакс эффект для частиц (только для десктопа)
     if (window.innerWidth > 768) {
         document.addEventListener('mousemove', (e) => {
             const particles = document.querySelectorAll('.particle');
@@ -754,7 +724,6 @@
         });
     }
 
-    // Оптимизация для мобильных: отключаем сложные анимации при низкой производительности
     if ('connection' in navigator && navigator.connection.saveData) {
         document.querySelectorAll('.particle').forEach(particle => {
             particle.style.animation = 'none';
